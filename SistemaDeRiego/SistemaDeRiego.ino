@@ -1,92 +1,83 @@
 #include <WiFi.h>
-#include <HTTPClient.h>
+#include <WebServer.h>
 #include <DHT.h>
 
 const char* ssid = "INFINITUM5E27";
 const char* password = "Hz6stSeSY3";
 
-const char* serverUrl = "http://192.168.1.105:3000/api/sensor";
-
+// Creamos el servidor web en el puerto 80
+WebServer server(80);
 
 // ===== Sensor DHT11 =====
 #define DHTPIN 4
 #define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
 
-// Parámetros de simulación para humedad de suelo
-const int SOIL_MIN = 30; // % mínimo simulado
-const int SOIL_MAX = 70; // % máximo simulado
+// Variables globales para mantener el último valor leído
+float temperaturaActual = 24.0;
+float humedadActual = 50.0;
+int humedadSueloActual = 50;
 
 void setup() {
-Serial.begin(115200);
-dht.begin();
-// semilla para random (ruido ADC)
-randomSeed(analogRead(34));
+  Serial.begin(115200);
+  dht.begin();
+  
+  // Semilla para el random de la humedad de suelo
+  randomSeed(analogRead(34));
 
-WiFi.begin(ssid, password);
-Serial.print("Conectando a WiFi");
-unsigned long start = millis();
-while (WiFi.status() != WL_CONNECTED && millis() - start < 30000) {
-delay(500);
-Serial.print(".");
-}
-if (WiFi.status() == WL_CONNECTED) {
-Serial.println();
-Serial.println("WiFi conectado");
-Serial.print("IP del ESP32: ");
-Serial.println(WiFi.localIP());
-} else {
-Serial.println();
-Serial.println("NO se conectó a WiFi (timeout)");
-}
+  // Conexión WiFi
+  WiFi.begin(ssid, password);
+  Serial.print("Conectando a WiFi");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  
+  // Mostrar la IP en el Monitor Serie
+  Serial.println();
+  Serial.println("¡WiFi conectado!");
+  Serial.print("IP del ESP32: ");
+  Serial.println(WiFi.localIP()); 
+
+  // ===== RUTA PARA QUE TU PÁGINA WEB LEA LOS DATOS =====
+  server.on("/datos", HTTP_GET, []() {
+    String json = "{";
+    json += "\"temperatura\":" + String(temperaturaActual, 1) + ",";
+    json += "\"humedad\":" + String(humedadActual, 1) + ",";
+    json += "\"humedadSuelo\":" + String(humedadSueloActual);
+    json += "}";
+
+    // Permite que Live Server (tu VS Code) lea los datos sin bloqueo de seguridad
+    server.sendHeader("Access-Control-Allow-Origin", "*");
+    server.send(200, "application/json", json);
+  });
+
+  // Arrancamos el servidor
+  server.begin();
 }
 
 void loop() {
-float temperatura = dht.readTemperature();
-float humedad = dht.readHumidity();
+  // 1. Atender a la página web si está pidiendo datos
+  server.handleClient();
 
-static float ultimaTemperaturaValida = 24.0;
-static float ultimaHumedadValida = 50.0;
-if (isnan(temperatura) || isnan(humedad)) {
-Serial.println("Error leyendo DHT11, usando último valor válido");
-temperatura = ultimaTemperaturaValida;
-humedad = ultimaHumedadValida;
-} else {
-ultimaTemperaturaValida = temperatura;
-ultimaHumedadValida = humedad;
-}
+  // 2. Leer los sensores cada 5 segundos SIN usar delay()
+  static unsigned long ultimaLectura = 0;
+  if (millis() - ultimaLectura > 5000) {
+    ultimaLectura = millis();
 
-// Solo la humedad de suelo es simulada
-int humedadSueloSimulada = random(SOIL_MIN, SOIL_MAX + 1);
+    float t = dht.readTemperature();
+    float h = dht.readHumidity();
 
-Serial.println("Temperatura DHT11: " + String(temperatura, 1) + " °C");
-Serial.println("Humedad DHT11: " + String(humedad, 1) + " %");
-Serial.println("Humedad suelo (SIMULADA): " + String(humedadSueloSimulada) + " %");
+    // Validar que la lectura del DHT11 sea correcta
+    if (!isnan(t) && !isnan(h)) {
+      temperaturaActual = t;
+      humedadActual = h;
+    }
 
-if (WiFi.status() == WL_CONNECTED) {
-HTTPClient http;
-http.begin(serverUrl);
-http.addHeader("Content-Type", "application/json");
-String payload = "{";
-payload += "\"temperatura\":" + String(temperatura, 1) + ",";
-payload += "\"humedad\":" + String(humedad, 1) + ",";
-payload += "\"humedadSuelo\":" + String(humedadSueloSimulada) + ",";
-payload += "\"humedadSueloSimulada\":true";
-payload += "}";
+    // Simular humedad de suelo entre 30% y 70%
+    humedadSueloActual = random(30, 71);
 
-int httpCode = http.POST(payload);
-if (httpCode > 0) {
-  String response = http.getString();
-  Serial.println("HTTP code: " + String(httpCode));
-  Serial.println("Respuesta: " + response);
-} else {
-  Serial.println("Error al enviar datos");
-  Serial.println(http.errorToString(httpCode));
-}
-http.end();
-} else {
-Serial.println("WiFi desconectado - no se envió");
-}
-
-delay(5000);
+    // Imprimir en una sola línea para que se vea ordenado en el Monitor Serie
+    Serial.println("Temp: " + String(temperaturaActual, 1) + " °C | Hum: " + String(humedadActual, 1) + " % | Suelo (Simulada): " + String(humedadSueloActual) + " %");
+  }
 }
