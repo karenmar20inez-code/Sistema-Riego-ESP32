@@ -2,8 +2,8 @@
 #include <HTTPClient.h>
 #include <DHT.h>
 
-const char* ssid = "INFINITUM5E27";
-const char* password = "Hz6stSeSY3";
+const char* ssid = "JULIOCADENA18";
+const char* password = "12345678";
 // ¡Tu enlace real de Firebase listo!
 const char* firebaseURL = "https://sistemaderiego-c9ca5-default-rtdb.firebaseio.com/datos.json"; 
 
