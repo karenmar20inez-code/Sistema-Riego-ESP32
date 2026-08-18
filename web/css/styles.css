@@ -1,0 +1,196 @@
+/* Estilos Personalizados para el Dashboard de Riego */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pageContent:not(.hidden) {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Estilos de alertas */
+.alert-box {
+    transition: all 0.3s ease;
+}
+
+.alert-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos de tarjetas KPI */
+.kpi-card {
+    transition: all 0.3s ease;
+}
+
+.kpi-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos de botones */
+button:active {
+    transform: scale(0.98);
+}
+
+/* Estilos de entrada */
+input:focus {
+    outline: none;
+}
+
+/* Responsivos */
+@media (max-width: 1024px) {
+    #dashboardScreen {
+        flex-direction: column;
+    }
+    
+    aside {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(15, 23, 42, 0.95);
+        z-index: 50;
+        transition: left 0.3s ease;
+    }
+    
+    aside.show {
+        left: 0;
+    }
+    
+    main {
+        margin-left: 0 !important;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    main {
+        padding: 1rem !important;
+    }
+}
+
+    transition: all 0.2s ease;
+}
+
+.btn-control:hover {
+    color: #e91e63;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.grid-item {
+    background-color: white;
+    border: 2px solid #999;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #666;
+    min-height: 200px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.grid-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Marca rosada en esquina superior derecha */
+.grid-item::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    background-color: #e91e63;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Estilos para items específicos con diferentes tamaños */
+.grid-item:nth-child(1) {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.grid-item:nth-child(2) {
+    grid-column: span 1;
+}
+
+.grid-item:nth-child(3) {
+    grid-column: span 1;
+}
+
+.grid-item:nth-child(4) {
+    grid-column: span 1;
+}
+
+.grid-item:nth-child(5) {
+    grid-column: span 1;
+}
+
+.grid-item:nth-child(6) {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.grid-item:nth-child(7) {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.grid-item:nth-child(8) {
+    grid-column: span 1;
+}
+
+.grid-item:nth-child(9) {
+    grid-column: span 1;
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
