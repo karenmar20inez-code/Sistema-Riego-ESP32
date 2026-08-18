@@ -17,13 +17,13 @@
                 <h1 class="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                     Riego Inteligente
                 </h1>
-                <p class="text-gray-400 text-sm mt-2">Panel de Control</p>
+                <p class="text-gray-400 text-sm mt-2">Panel de Control en la Nube</p>
             </div>
             
             <form id="login-form" class="space-y-4">
                 <div>
                     <label class="block text-sm font-semibold text-gray-300 mb-2">Usuario</label>
-                    <input type="text" id="username" placeholder="Ingrese su usuario" 
+                    <input type="text" id="username" placeholder="Ingrese su usuario o nombre" 
                         class="w-full px-4 py-2 bg-slate-700 border border-blue-500/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition">
                 </div>
                 
@@ -38,11 +38,11 @@
                 </button>
             </form>
             
-            <p class="text-center text-gray-400 text-xs mt-4">Demo: usuario / 1234</p>
+            <p class="text-center text-gray-400 text-xs mt-4">Ejemplo: Lisette / 1234</p>
         </div>
     </div>
 
-    <!-- MAIN APP (Hidden until login) -->
+    <!-- MAIN APP -->
     <div id="app-section" class="hidden flex h-screen overflow-hidden">
         
         <!-- SIDEBAR -->
@@ -52,12 +52,9 @@
                     Riego Inteligente
                 </h1>
                 <p class="text-gray-400 text-sm mt-1">Panel de Control</p>
-
             </div>
 
-            <!-- Navigation Sections -->
             <nav class="p-4 space-y-6">
-                
                 <!-- PROFILE -->
                 <div>
                     <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Perfil</h3>
@@ -132,7 +129,7 @@
                             <span id="sidebar-humidity" class="font-semibold text-cyan-400">-- %</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
-                            <span class="text-gray-400">Humedad del Suelo</span>
+                            <span class="text-gray-400">Humedad Suelo</span>
                             <span id="sidebar-moisture" class="font-semibold text-blue-400">-- %</span>
                         </div>
                     </div>
@@ -162,17 +159,15 @@
                     </div>
                 </div>
 
-                <!-- REPORT -->
-                <div class="border-t border-blue-500/20 pt-4 space-y-2">
-                    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Reporte</h3>
-                    <button id="download-report" class="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition text-sm">
-                        Descargar Reporte
+                <!-- REPORT & LOGOUT -->
+                <div class="border-t border-blue-500/20 pt-4 space-y-3">
+                    <button id="download-history-btn" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-semibold py-2 px-4 rounded-lg transition text-sm shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2">
+                        <span>📊</span> Descargar Historial
                     </button>
                     <button id="logout-btn" class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition text-sm">
                         Cerrar Sesión
                     </button>
                 </div>
-
             </nav>
         </aside>
 
@@ -188,26 +183,10 @@
                     </div>
                     <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg max-w-xl">
                         <form id="formCuenta" class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-300 mb-2">Nombre</label>
-                                <input type="text" id="cuenta-nombre" placeholder="Tu nombre" class="w-full px-4 py-2 bg-slate-700 border border-blue-500/30 rounded-lg text-white placeholder-gray-500 focus:outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-300 mb-2">Correo</label>
-                                <input type="email" id="cuenta-correo" placeholder="tu@correo.com" class="w-full px-4 py-2 bg-slate-700 border border-blue-500/30 rounded-lg text-white placeholder-gray-500 focus:outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-300 mb-2">Contraseña actual</label>
-                                <input type="password" id="cuenta-current-password" placeholder="Contraseña actual (dejar vacío si no cambia)" class="w-full px-4 py-2 bg-slate-700 border border-blue-500/30 rounded-lg text-white placeholder-gray-500 focus:outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-300 mb-2">Nueva contraseña</label>
-                                <input type="password" id="cuenta-new-password" placeholder="Nueva contraseña (mínimo 6 caracteres)" class="w-full px-4 py-2 bg-slate-700 border border-blue-500/30 rounded-lg text-white placeholder-gray-500 focus:outline-none">
-                            </div>
-
-                            <div class="flex gap-3">
-                                <button type="submit" class="bg-cyan-600 px-4 py-2 rounded text-white">Guardar cambios</button>
-                                <button type="button" id="btn-cancel-cuenta" class="bg-slate-700 px-4 py-2 rounded text-gray-300">Cancelar</button>
+                            <div><label class="block text-sm font-semibold text-gray-300 mb-2">Nombre</label><input type="text" id="cuenta-nombre" placeholder="Tu nombre" class="w-full px-4 py-2 bg-slate-700 border border-blue-500/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition"></div>
+                            <div><label class="block text-sm font-semibold text-gray-300 mb-2">Correo</label><input type="email" placeholder="tu@correo.com" class="w-full px-4 py-2 bg-slate-700 border border-blue-500/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition"></div>
+                            <div class="flex gap-3 mt-4">
+                                <button type="button" id="btn-guardar-perfil" class="bg-cyan-600 px-4 py-2 rounded text-white hover:bg-cyan-500 transition shadow-lg shadow-cyan-500/20">Guardar cambios</button>
                             </div>
                         </form>
                     </div>
@@ -215,428 +194,509 @@
 
                 <!-- OVERVIEW SECTION -->
                 <section id="overview-section" class="section-content">
-                    
-                    <!-- Header -->
                     <div class="mb-8">
                         <h2 class="text-3xl font-bold mb-2">Resumen de Monitoreo</h2>
-                        <p id="welcome-user" class="text-cyan-300 font-semibold text-lg mb-2">Bienvenido, Usuario</p>
+                        <p id="welcome-user" class="text-cyan-300 font-semibold text-lg mb-2">Bienvenida, Usuario</p>
                         <div class="flex items-center gap-4">
                             <p class="text-gray-400">Estado del sistema en tiempo real y condiciones ambientales</p>
-
                             <div class="ml-auto flex items-center gap-4">
                                 <div id="connection-status" class="flex items-center gap-2">
                                     <span id="connection-dot" class="w-3 h-3 rounded-full bg-red-500"></span>
                                     <span id="connection-text" class="text-sm text-red-400">Desconectado</span>
                                 </div>
-                                <div class="text-sm text-gray-400">
-                                    Última lectura: <span id="last-read">—</span>
-                                </div>
+                                <div class="text-sm text-gray-400">Última lectura: <span id="last-read">—</span></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- KPI Cards -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                        
-                        <!-- Temperature Card -->
-                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-orange-500/20 shadow-lg hover:shadow-orange-500/10 transition">
+                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-orange-500/20 shadow-lg">
                             <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <p class="text-gray-400 text-sm mb-1">Temperatura Actual</p>
-                                    <p class="text-4xl font-bold text-orange-400" id="kpi-temp">--</p>
-                                    <p class="text-gray-500 text-xs mt-1">°C</p>
-                                </div>
-                                <span class="text-3xl">🌡️</span>
-                            </div>
-                            <div class="text-green-400 text-xs font-semibold">
-                                <span id="temp-change">En tiempo real</span>
+                                <div><p class="text-gray-400 text-sm mb-1">Temperatura Actual</p><p class="text-4xl font-bold text-orange-400" id="kpi-temp">--</p><p class="text-gray-500 text-xs mt-1">°C</p></div><span class="text-3xl">🌡️</span>
                             </div>
                         </div>
-
-                        <!-- Humedad DHT11 Card -->
-                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-cyan-500/20 shadow-lg hover:shadow-cyan-500/10 transition">
+                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-cyan-500/20 shadow-lg">
                             <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <p class="text-gray-400 text-sm mb-1">Humedad DHT11</p>
-                                    <p class="text-4xl font-bold text-cyan-400" id="kpi-humidity">--</p>
-                                    <p class="text-gray-500 text-xs mt-1">%</p>
-                                </div>
-                                <span class="text-3xl">💧</span>
-                            </div>
-                            <div class="text-green-400 text-xs font-semibold">
-                                Ambiente
+                                <div><p class="text-gray-400 text-sm mb-1">Humedad DHT11</p><p class="text-4xl font-bold text-cyan-400" id="kpi-humidity">--</p><p class="text-gray-500 text-xs mt-1">%</p></div><span class="text-3xl">💧</span>
                             </div>
                         </div>
-
-                        <!-- Humedad del Suelo (Simulada) Card -->
-                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-cyan-500/20 shadow-lg hover:shadow-cyan-500/10 transition">
+                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-cyan-500/20 shadow-lg">
                             <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <p class="text-gray-400 text-sm mb-1">Humedad del Suelo</p>
-                                    <div class="flex items-baseline gap-2">
-                                      <p class="text-4xl font-bold text-cyan-400" id="kpi-moisture">--</p>
-                                      <span id="kpi-moisture-badge" class="text-xs text-yellow-300 ml-2 hidden">(simulada)</span>
-                                    </div>
-                                    <p class="text-gray-500 text-xs mt-1"><span id="kpi-moisture-unit">%</span></p>
-                                </div>
-                                <span class="text-3xl">🌱</span>
-                            </div>
-                            <div class="text-green-400 text-xs font-semibold">
-                                Simulada
+                                <div><p class="text-gray-400 text-sm mb-1">Humedad del Suelo</p><div class="flex items-baseline gap-2"><p class="text-4xl font-bold text-cyan-400" id="kpi-moisture">--</p></div><p class="text-gray-500 text-xs mt-1">%</p></div><span class="text-3xl">🌱</span>
                             </div>
                         </div>
-
-                        <!-- Last Irrigation Card -->
-                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg hover:shadow-blue-500/10 transition">
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <p class="text-gray-400 text-sm mb-1">Último Riego</p>
-                                    <p class="text-3xl font-bold text-blue-400" id="kpi-last-irrigation">10</p>
-                                    <p class="text-gray-500 text-xs mt-1">min atrás</p>
-                                </div>
-                                <span class="text-3xl">🚿</span>
-                            </div>
-                            <div class="text-blue-300 text-xs font-semibold mt-2">
-                                Próximo: <span id="kpi-next-irrigation">35 min</span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Debug / Manual Refresh -->
-                    <div class="mb-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <h3 class="text-lg font-semibold">Últimos datos (depuración)</h3>
-                            <div class="flex gap-2">
-                                <button id="refresh-now" class="text-sm bg-slate-700/30 px-3 py-2 rounded-lg text-gray-300 hover:bg-slate-700/50">Refrescar ahora</button>
-                            </div>
-                        </div>
-                        <pre id="debug-json" class="text-xs p-4 bg-slate-800 rounded-lg overflow-auto" style="max-height:160px">—</pre>
-                    </div>
-
-                    <!-- Main Charts Row -->
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-                        
-                        <!-- Temperature & Humidity Chart -->
-                        <div class="lg:col-span-2 bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg">
-                            <h3 class="text-lg font-semibold mb-4">Temperatura y Humedad del Suelo</h3>
-                            <div class="relative h-80">
-                                <canvas id="tempHumidityChart"></canvas>
-                            </div>
-                        </div>
-
-                        <!-- Irrigation Frequency -->
                         <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg">
-                            <h3 class="text-lg font-semibold mb-4">Frecuencia de Riego</h3>
-                            <div class="space-y-3 mb-6">
-                                <div class="text-sm">
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-400">08:00</span>
-                                        <span class="text-cyan-400 font-semibold">2.4 L</span>
-                                    </div>
-                                    <div class="w-full bg-slate-700 rounded-full h-2">
-                                        <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-2 rounded-full" style="width: 85%"></div>
-                                    </div>
-                                </div>
-                                <div class="text-sm">
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-400">10:30</span>
-                                        <span class="text-cyan-400 font-semibold">2.1 L</span>
-                                    </div>
-                                    <div class="w-full bg-slate-700 rounded-full h-2">
-                                        <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-2 rounded-full" style="width: 75%"></div>
-                                    </div>
-                                </div>
-                                <div class="text-sm">
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-400">13:00</span>
-                                        <span class="text-cyan-400 font-semibold">2.3 L</span>
-                                    </div>
-                                    <div class="w-full bg-slate-700 rounded-full h-2">
-                                        <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-2 rounded-full" style="width: 82%"></div>
-                                    </div>
-                                </div>
-                                <div class="text-sm">
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-400">15:30</span>
-                                        <span class="text-cyan-400 font-semibold">2.0 L</span>
-                                    </div>
-                                    <div class="w-full bg-slate-700 rounded-full h-2">
-                                        <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-2 rounded-full" style="width: 71%"></div>
-                                    </div>
-                                </div>
-                                <div class="text-sm">
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-400">18:00</span>
-                                        <span class="text-cyan-400 font-semibold">2.5 L</span>
-                                    </div>
-                                    <div class="w-full bg-slate-700 rounded-full h-2">
-                                        <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-2 rounded-full" style="width: 89%"></div>
-                                    </div>
-                                </div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div><p class="text-gray-400 text-sm mb-1">Último Riego</p><p class="text-3xl font-bold text-blue-400" id="kpi-last-irrigation">10</p><p class="text-gray-500 text-xs mt-1">min atrás</p></div><span class="text-3xl">🚿</span>
                             </div>
-                            <button id="view-history-btn" class="w-full text-sm text-cyan-400 hover:text-cyan-300 font-semibold py-2 border border-cyan-500/30 rounded-lg hover:bg-cyan-500/10 transition">
-                                Ver historial de riego
-                            </button>
                         </div>
-
                     </div>
 
-                    <!-- Bottom Charts Row -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                        
-                        <!-- Nutrient Distribution -->
-                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-purple-500/20 shadow-lg">
-                            <h3 class="text-lg font-semibold mb-4">Distribución de Nutrientes</h3>
-                            <div class="relative h-64">
-                                <canvas id="nutrientDistributionChart"></canvas>
-                            </div>
-                        </div>
-
-                        <!-- Nutrient Consumption by Plant -->
-                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-purple-500/20 shadow-lg">
-                            <h3 class="text-lg font-semibold mb-4">Consumo de Nutrientes por Planta</h3>
-                            <div class="relative h-64">
-                                <canvas id="nutrientByPlantChart"></canvas>
-                            </div>
-                        </div>
-
-                        <!-- Irrigation Events per Day -->
-                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg">
-                            <h3 class="text-lg font-semibold mb-4">Eventos de Riego / Día</h3>
-                            <div class="relative h-64">
-                                <canvas id="irrigationEventsChart"></canvas>
-                            </div>
-                        </div>
-
+                    <!-- Gráfica Principal -->
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg mb-8">
+                        <h3 class="text-lg font-semibold mb-4 text-white">Dispersión de Temperatura y Humedad en Vivo</h3>
+                        <div class="relative h-80"><canvas id="tempHumidityChart"></canvas></div>
                     </div>
 
-                    <!-- Alerts Section -->
+                    <!-- 3 GRÁFICAS DE DISTRIBUCIÓN -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-purple-500/20 shadow-lg">
+                            <h3 class="text-sm font-semibold mb-4 text-white text-center">Distribución de Nutrientes</h3>
+                            <div class="relative h-48"><canvas id="pieNutrientesChart"></canvas></div>
+                        </div>
+                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-emerald-500/20 shadow-lg">
+                            <h3 class="text-sm font-semibold mb-4 text-white text-center">Consumo de Nutrientes por Planta</h3>
+                            <div class="relative h-48"><canvas id="doughnutConsumoChart"></canvas></div>
+                        </div>
+                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-cyan-500/20 shadow-lg">
+                            <h3 class="text-sm font-semibold mb-4 text-white text-center">Eventos de Riego / Día</h3>
+                            <div class="relative h-48"><canvas id="barRiegoDiarioChart"></canvas></div>
+                        </div>
+                    </div>
+
+                    <!-- SISTEMA DE ALERTAS -->
                     <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-yellow-500/20 shadow-lg mb-8">
-                        <h3 class="text-lg font-semibold mb-4">Alertas del Sistema</h3>
+                        <h3 class="text-lg font-semibold mb-4 text-white flex items-center gap-2"><span class="text-yellow-500">⚠️</span> Alertas del Sistema</h3>
                         <div id="alerts-container" class="space-y-3">
-                            <!-- Alerts will be populated here -->
+                            <div class="p-4 bg-slate-900/50 rounded-lg text-gray-400 text-sm border border-slate-700">Esperando conexión para evaluar el sistema...</div>
                         </div>
                     </div>
 
+                    <!-- PANEL DE DEPURACIÓN -->
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-slate-600/30 shadow-lg">
+                        <h3 class="text-lg font-semibold mb-4 text-white flex items-center gap-2"><span class="text-slate-400">⚙️</span> Últimos datos (Depuración)</h3>
+                        <pre id="debug-json" class="text-sm p-4 bg-slate-900 rounded-lg overflow-auto text-green-400 border border-slate-700 shadow-inner">Esperando datos JSON de Firebase...</pre>
+                    </div>
                 </section>
 
-                <!-- GRAPHS SECTION -->
+                <!-- GRAPHS SECTION (3 GRÁFICOS DETALLADOS) -->
                 <section id="graphs-section" class="section-content hidden">
                     <div class="mb-8">
                         <h2 class="text-3xl font-bold mb-2">Gráficos Detallados</h2>
                         <p class="text-gray-400">Análisis de datos históricos y tendencias</p>
-                        <div class="mt-4">
-                            <button id="refresh-charts-btn" class="text-sm bg-slate-700/30 px-3 py-2 rounded-lg text-gray-300 hover:bg-slate-700/50">Recalcular gráficos</button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg">
+                            <h3 class="text-lg font-semibold mb-6 text-white text-center">Frecuencia de Riego</h3>
+                            <div class="relative h-64"><canvas id="historialRiegoChart"></canvas></div>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg">
+                            <h3 class="text-lg font-semibold mb-6 text-white text-center">Temp. Promedio (°C)</h3>
+                            <div class="relative h-64"><canvas id="historialTempChart"></canvas></div>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg">
+                            <h3 class="text-lg font-semibold mb-6 text-white text-center">Consumo de Agua (L)</h3>
+                            <div class="relative h-64"><canvas id="historialAguaChart"></canvas></div>
                         </div>
                     </div>
+                </section>
 
-                            <!-- Detailed charts grid -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                                <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg">
-                                    <h3 class="text-lg font-semibold mb-4">Frecuencia de Riego (Detalle)</h3>
-                                    <div class="relative h-64">
-                                        <canvas id="frequencyChart"></canvas>
-                                    </div>
-                                </div>
-
-                                <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg">
-                                    <h3 class="text-lg font-semibold mb-4">Temperatura Semanal</h3>
-                                    <div class="relative h-64">
-                                        <canvas id="weeklyTempChart"></canvas>
-                                    </div>
-                                </div>
-
-                                <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg md:col-span-2">
-                                    <h3 class="text-lg font-semibold mb-4">Humedad Semanal</h3>
-                                    <div class="relative h-64">
-                                        <canvas id="weeklyHumidityChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                <!-- PLANTS SECTION -->
+                <!-- PLANTS SECTION (5 PLANTAS) -->
                 <section id="plants-section" class="section-content hidden">
                     <div class="mb-8">
                         <h2 class="text-3xl font-bold mb-2">Monitoreo de Plantas</h2>
-                        <p class="text-gray-400">Estado e indicadores de plantas individuales</p>
+                        <p class="text-gray-400">Desglose de humedad, agua consumida y nutrición por maceta</p>
                     </div>
-                    <div id="plants-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Plants will be populated here -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-red-500/30 shadow-lg">
+                            <div class="flex justify-between items-start mb-4"><div><h3 class="text-lg font-bold text-white">Tomate Cherry</h3><p class="text-xs text-red-300 font-semibold mt-1">Alta demanda</p></div><span class="text-3xl">🍅</span></div>
+                            <div class="space-y-4"><div><div class="flex justify-between text-sm mb-1"><span class="text-gray-300">Humedad Suelo</span><span class="text-red-400 font-semibold">42%</span></div><div class="w-full bg-slate-900 rounded-full h-2 shadow-inner"><div class="bg-gradient-to-r from-red-500 to-orange-500 h-2 rounded-full" style="width: 42%"></div></div></div></div>
+                            <div class="mt-5 pt-4 border-t border-slate-600/50 space-y-2"><div class="flex justify-between text-xs"><span class="text-gray-400">Agua (Semana):</span><span class="text-white font-semibold">14.5 L</span></div><div class="flex justify-between text-xs"><span class="text-gray-400">Consumo Nutrientes:</span><span class="text-white font-semibold">30% del total</span></div></div>
+                        </div>
+                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-emerald-500/30 shadow-lg">
+                            <div class="flex justify-between items-start mb-4"><div><h3 class="text-lg font-bold text-white">Suculenta Echeveria</h3><p class="text-xs text-emerald-300 font-semibold mt-1">Baja demanda</p></div><span class="text-3xl">🌵</span></div>
+                            <div class="space-y-4"><div><div class="flex justify-between text-sm mb-1"><span class="text-gray-300">Humedad Suelo</span><span class="text-emerald-400 font-semibold">25%</span></div><div class="w-full bg-slate-900 rounded-full h-2 shadow-inner"><div class="bg-gradient-to-r from-emerald-500 to-teal-500 h-2 rounded-full" style="width: 25%"></div></div></div></div>
+                            <div class="mt-5 pt-4 border-t border-slate-600/50 space-y-2"><div class="flex justify-between text-xs"><span class="text-gray-400">Agua (Semana):</span><span class="text-white font-semibold">1.2 L</span></div><div class="flex justify-between text-xs"><span class="text-gray-400">Consumo Nutrientes:</span><span class="text-white font-semibold">10% del total</span></div></div>
+                        </div>
+                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-green-500/30 shadow-lg">
+                            <div class="flex justify-between items-start mb-4"><div><h3 class="text-lg font-bold text-white">Albahaca Dulce</h3><p class="text-xs text-green-300 font-semibold mt-1">Media demanda</p></div><span class="text-3xl">🌿</span></div>
+                            <div class="space-y-4"><div><div class="flex justify-between text-sm mb-1"><span class="text-gray-300">Humedad Suelo</span><span class="text-green-400 font-semibold">75%</span></div><div class="w-full bg-slate-900 rounded-full h-2 shadow-inner"><div class="bg-gradient-to-r from-green-500 to-lime-500 h-2 rounded-full" style="width: 75%"></div></div></div></div>
+                            <div class="mt-5 pt-4 border-t border-slate-600/50 space-y-2"><div class="flex justify-between text-xs"><span class="text-gray-400">Agua (Semana):</span><span class="text-white font-semibold">6.8 L</span></div><div class="flex justify-between text-xs"><span class="text-gray-400">Consumo Nutrientes:</span><span class="text-white font-semibold">20% del total</span></div></div>
+                        </div>
+                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-amber-500/30 shadow-lg">
+                            <div class="flex justify-between items-start mb-4"><div><h3 class="text-lg font-bold text-white">Chile Jalapeño</h3><p class="text-xs text-amber-300 font-semibold mt-1">Alta demanda</p></div><span class="text-3xl">🌶️</span></div>
+                            <div class="space-y-4"><div><div class="flex justify-between text-sm mb-1"><span class="text-gray-300">Humedad Suelo</span><span class="text-amber-400 font-semibold">60%</span></div><div class="w-full bg-slate-900 rounded-full h-2 shadow-inner"><div class="bg-gradient-to-r from-amber-500 to-yellow-500 h-2 rounded-full" style="width: 60%"></div></div></div></div>
+                            <div class="mt-5 pt-4 border-t border-slate-600/50 space-y-2"><div class="flex justify-between text-xs"><span class="text-gray-400">Agua (Semana):</span><span class="text-white font-semibold">9.5 L</span></div><div class="flex justify-between text-xs"><span class="text-gray-400">Consumo Nutrientes:</span><span class="text-white font-semibold">25% del total</span></div></div>
+                        </div>
+                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-teal-500/30 shadow-lg">
+                            <div class="flex justify-between items-start mb-4"><div><h3 class="text-lg font-bold text-white">Cilantro</h3><p class="text-xs text-teal-300 font-semibold mt-1">Media demanda</p></div><span class="text-3xl">🥗</span></div>
+                            <div class="space-y-4"><div><div class="flex justify-between text-sm mb-1"><span class="text-gray-300">Humedad Suelo</span><span class="text-teal-400 font-semibold">80%</span></div><div class="w-full bg-slate-900 rounded-full h-2 shadow-inner"><div class="bg-gradient-to-r from-teal-500 to-cyan-500 h-2 rounded-full" style="width: 80%"></div></div></div></div>
+                            <div class="mt-5 pt-4 border-t border-slate-600/50 space-y-2"><div class="flex justify-between text-xs"><span class="text-gray-400">Agua (Semana):</span><span class="text-white font-semibold">5.0 L</span></div><div class="flex justify-between text-xs"><span class="text-gray-400">Consumo Nutrientes:</span><span class="text-white font-semibold">15% del total</span></div></div>
+                        </div>
                     </div>
                 </section>
 
-                <!-- IRRIGATION SECTIONS -->
+                <!-- AUTOMÁTICO SECTION -->
                 <section id="automatic-section" class="section-content hidden">
-                    <div class="mb-8">
-                        <h2 class="text-3xl font-bold mb-2">Riego Automático</h2>
-                        <p class="text-gray-400">Configuración del modo automático y reglas</p>
-                    </div>
-                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg">
+                    <div class="mb-8"><h2 class="text-3xl font-bold mb-2">Riego Automático</h2><p class="text-gray-400">Configuración del modo automático y reglas</p></div>
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg max-w-lg">
                         <form id="formAutomatico" class="space-y-4">
-                            <div class="flex items-center gap-4">
-                                <label class="text-sm text-gray-400">Habilitar automático</label>
-                                <input type="checkbox" id="enableAutomatic" class="h-5 w-5" checked>
-                            </div>
-                            <div>
-                                <label class="text-sm text-gray-400">Humedad mínima (%)</label>
-                                <input type="number" id="minMoisture" value="45" class="w-32 mt-1 px-3 py-2 rounded bg-slate-700 text-white">
-                            </div>
-                            <button type="submit" class="bg-cyan-600 px-4 py-2 rounded text-white">Guardar</button>
+                            <div class="flex items-center gap-4"><label class="text-sm text-gray-400">Habilitar automático</label><input type="checkbox" id="enableAutomatic" class="h-5 w-5" checked></div>
+                            <div><label class="text-sm text-gray-400">Umbral mínimo (%)</label><input type="number" id="minMoisture" value="45" class="w-full mt-1 px-3 py-2 rounded bg-slate-700 text-white border border-slate-600 focus:border-cyan-400"></div>
+                            <button type="button" class="w-full bg-cyan-600 px-4 py-2 rounded text-white shadow-lg shadow-cyan-500/20 mt-4 hover:bg-cyan-500 transition">Guardar Configuración</button>
                         </form>
                     </div>
                 </section>
 
+                <!-- RIEGO MANUAL -->
                 <section id="manual-section" class="section-content hidden">
-                    <div class="mb-8">
-                        <h2 class="text-3xl font-bold mb-2">Riego Manual</h2>
-                        <p class="text-gray-400">Control manual rápido de las bombas y electroválvulas</p>
-                    </div>
-                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg">
+                    <div class="mb-8"><h2 class="text-3xl font-bold mb-2">Riego Manual</h2><p class="text-gray-400">Control manual de bombas y electroválvulas</p></div>
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg max-w-lg">
                         <div class="space-y-4">
-                            <div>
-                                <label class="text-sm text-gray-400">Duración (min)</label>
-                                <input id="duracionManual" type="number" value="5" class="w-32 mt-1 px-3 py-2 rounded bg-slate-700 text-white">
-                            </div>
-                            <div id="riegoManualStatus" class="mt-2 p-4 bg-slate-700 rounded-lg text-center text-gray-300">Sistema en espera</div>
-                            <div class="flex gap-3">
-                                <button id="btn-start-manual" onclick="iniciarRiego()" class="bg-green-600 px-4 py-2 rounded text-white">Iniciar Riego</button>
-                                                                                <button id="btn-stop-manual" onclick="detenerRiego()" class="bg-red-600 px-4 py-2 rounded text-white">Detener Riego</button>
+                            <div><label class="text-sm text-gray-400">Duración del riego (minutos)</label><input id="duracionManual" type="number" value="5" class="w-full mt-1 px-3 py-2 rounded bg-slate-700 text-white border border-slate-600 focus:border-cyan-400"></div>
+                            <div id="riegoManualStatus" class="mt-2 p-4 bg-slate-900/50 rounded-lg text-center text-gray-300 font-semibold border border-slate-700 transition-all duration-300">Sistema en espera</div>
+                            <div class="flex gap-3 mt-4">
+                                <button id="btn-start-manual" class="flex-1 bg-green-600 hover:bg-green-500 text-white font-bold py-3 rounded-lg transition shadow-lg shadow-green-500/20">Iniciar Riego</button>
+                                <button id="btn-stop-manual" class="flex-1 bg-red-600 hover:bg-red-500 text-white font-bold py-3 rounded-lg transition shadow-lg shadow-red-500/20">Detener</button>
                             </div>
                         </div>
                     </div>
                 </section>
 
+                <!-- PROGRAMACIÓN -->
                 <section id="schedule-section" class="section-content hidden">
-                    <div class="mb-8">
-                        <h2 class="text-3xl font-bold mb-2">Programación</h2>
-                        <p class="text-gray-400">Crear y ver programaciones de riego</p>
-                    </div>
-                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg">
-                        <form id="formProgramacion" class="space-y-4">
-                            <div>
-                                <label class="text-sm text-gray-400">Hora</label>
-                                <input type="time" id="horaProgramacion" class="w-40 mt-1 px-3 py-2 rounded bg-slate-700 text-white">
-                            </div>
-                            <div>
-                                <label class="text-sm text-gray-400">Duración (min)</label>
-                                <input type="number" id="duracionProgramacion" class="w-32 mt-1 px-3 py-2 rounded bg-slate-700 text-white" value="10">
-                            </div>
-                            <button type="submit" class="bg-cyan-600 px-4 py-2 rounded text-white">Agregar Programación</button>
+                    <div class="mb-8"><h2 class="text-3xl font-bold mb-2">Programación</h2><p class="text-gray-400">Crear y ver programaciones de riego</p></div>
+                    
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg max-w-lg mb-8">
+                        <form class="space-y-4">
+                            <div><label class="text-sm text-gray-400">Hora de inicio</label><input type="time" id="horaProgramacion" class="w-full mt-1 px-3 py-2 rounded bg-slate-700 text-white border border-slate-600 focus:border-cyan-400"></div>
+                            <div><label class="text-sm text-gray-400">Duración (minutos)</label><input type="number" id="duracionProgramacion" class="w-full mt-1 px-3 py-2 rounded bg-slate-700 text-white border border-slate-600 focus:border-cyan-400" value="10"></div>
+                            <button type="button" id="btn-add-schedule" class="w-full bg-blue-600 px-4 py-2 rounded text-white shadow-lg shadow-blue-500/20 mt-4 hover:bg-blue-500 transition">Agregar Programación</button>
                         </form>
+                    </div>
 
-                        <div class="mt-6">
-                            <h4 class="text-sm text-gray-300 mb-2">Programaciones</h4>
-                            <div id="programacionesContainer" class="space-y-3"></div>
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg max-w-lg">
+                        <h3 class="text-lg font-semibold mb-4 text-white">Riegos Programados</h3>
+                        <div id="listaProgramaciones" class="space-y-3">
+                            <p id="empty-schedule-msg" class="text-sm text-gray-500 italic">No hay riegos programados actualmente.</p>
                         </div>
                     </div>
                 </section>
 
+                <!-- HISTORIAL DE RIEGO -->
                 <section id="history-section" class="section-content hidden">
-                    <div class="mb-8">
-                        <h2 class="text-3xl font-bold mb-2">Historial de Riego</h2>
-                        <p class="text-gray-400">Eventos de riego pasados</p>
-                    </div>
+                    <div class="mb-8"><h2 class="text-3xl font-bold mb-2">Historial de Riego</h2><p class="text-gray-400">Eventos de riego pasados (Se actualiza al usar Riego Manual)</p></div>
                     <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-blue-500/20 shadow-lg overflow-x-auto">
                         <table class="min-w-full text-left">
                             <thead>
                                 <tr>
-                                    <th class="px-6 py-3 text-gray-400 text-sm">Fecha</th>
-                                    <th class="px-6 py-3 text-gray-400 text-sm">Hora</th>
-                                    <th class="px-6 py-3 text-gray-400 text-sm">Duración</th>
-                                    <th class="px-6 py-3 text-gray-400 text-sm">Agua</th>
-                                    <th class="px-6 py-3 text-gray-400 text-sm">Estado</th>
+                                    <th class="px-6 py-3 text-gray-400 text-sm font-semibold">Fecha</th>
+                                    <th class="px-6 py-3 text-gray-400 text-sm font-semibold">Hora</th>
+                                    <th class="px-6 py-3 text-gray-400 text-sm font-semibold">Duración</th>
+                                    <th class="px-6 py-3 text-gray-400 text-sm font-semibold">Agua Est.</th>
+                                    <th class="px-6 py-3 text-gray-400 text-sm font-semibold">Estado</th>
                                 </tr>
                             </thead>
                             <tbody id="historialContainer">
-                                <!-- Rows injected by JS -->
+                                <tr class="border-t border-slate-700/50 hover:bg-slate-700/20 transition">
+                                    <td class="px-6 py-4 text-sm text-gray-300">Hoy (Auto)</td><td class="px-6 py-4 text-sm text-cyan-400 font-medium">08:00 AM</td><td class="px-6 py-4 text-sm text-gray-300">10 min</td><td class="px-6 py-4 text-sm text-gray-300">2.4 L</td><td class="px-6 py-4 text-sm font-semibold text-green-400">Completado</td>
+                                </tr>
+                                <tr class="border-t border-slate-700/50 hover:bg-slate-700/20 transition">
+                                    <td class="px-6 py-4 text-sm text-gray-300">Ayer (Auto)</td><td class="px-6 py-4 text-sm text-cyan-400 font-medium">06:30 PM</td><td class="px-6 py-4 text-sm text-gray-300">5 min</td><td class="px-6 py-4 text-sm text-gray-300">1.2 L</td><td class="px-6 py-4 text-sm font-semibold text-green-400">Completado</td>
+                                </tr>
+                                <tr class="border-t border-slate-700/50 hover:bg-slate-700/20 transition">
+                                    <td class="px-6 py-4 text-sm text-gray-300">Ayer (Auto)</td><td class="px-6 py-4 text-sm text-cyan-400 font-medium">08:00 AM</td><td class="px-6 py-4 text-sm text-gray-300">10 min</td><td class="px-6 py-4 text-sm text-gray-300">2.4 L</td><td class="px-6 py-4 text-sm font-semibold text-green-400">Completado</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </section>
 
-                <!-- OTHER SECTIONS (Placeholder) -->
-                <section id="other-section" class="section-content hidden">
-                    <div class="mb-8">
-                        <h2 class="text-3xl font-bold mb-2">Sección</h2>
-                        <p class="text-gray-400">Contenido próximamente...</p>
-                    </div>
-                </section>
-
             </div>
         </main>
-
     </div>
 
-    <script src="js/data.js"></script>
-    <script src="js/charts.js"></script>
-    <script src="js/ui.js"></script>
-    <script src="js/login.js"></script>
-    <script src="js/app.js"></script>
-    
-    <!-- Simulador local desactivado para evitar conflicto con los datos reales del ESP32 -->
-    <!-- <script src="js/simulator.js"></script> -->
-
     <!-- ========================================== -->
-    <!-- PUENTE DE CONEXIÓN EN TIEMPO REAL AL ESP32 -->
+    <!-- LÓGICA DEL SISTEMA, GRÁFICOS Y BOTONES     -->
     <!-- ========================================== -->
     <script>
-        // LA IP FUE ACTUALIZADA AQUÍ (Línea 402)
-        const IP_ESP32 = "http://192.168.1.106"; 
+        // ==========================================
+        // CONFIGURACIÓN DE FIREBASE
+        // ==========================================
+        const URL_FIREBASE = "https://sistemaderiego-c9ca5-default-rtdb.firebaseio.com/datos.json"; 
 
-        function obtenerDatosESP32() {
-            fetch(`${IP_ESP32}/datos`)
-                .then(respuesta => respuesta.json())
-                .then(datos => {
-                    // --- ACTUALIZAR TARJETAS PRINCIPALES (KPIs) ---
-                    document.getElementById('kpi-temp').innerText = datos.temperatura;
-                    document.getElementById('kpi-humidity').innerText = datos.humedad;
-                    document.getElementById('kpi-moisture').innerText = datos.humedadSuelo;
+        Chart.defaults.color = '#9ca3af';
+        Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+        Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(15, 23, 42, 0.9)';
+        Chart.defaults.plugins.tooltip.titleColor = '#38bdf8';
+        Chart.defaults.plugins.tooltip.bodyColor = '#e2e8f0';
+        Chart.defaults.plugins.tooltip.borderColor = 'rgba(56, 189, 248, 0.3)';
+        Chart.defaults.plugins.tooltip.borderWidth = 1;
+        Chart.defaults.plugins.tooltip.padding = 12;
+        Chart.defaults.plugins.tooltip.cornerRadius = 8;
 
-                    // --- ACTUALIZAR BARRA LATERAL (SIDEBAR) ---
-                    document.getElementById('sidebar-temp').innerText = datos.temperatura + " °C";
-                    document.getElementById('sidebar-humidity').innerText = datos.humedad + " %";
-                    document.getElementById('sidebar-moisture').innerText = datos.humedadSuelo + " %";
+        // INICIO DE SESIÓN CON LÓGICA DE NOMBRE
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let inputNombre = document.getElementById('username').value.trim();
+            if(inputNombre === "") inputNombre = "Usuario"; 
+            
+            let primerNombre = inputNombre.split(' ')[0];
+            primerNombre = primerNombre.charAt(0).toUpperCase() + primerNombre.slice(1).toLowerCase();
+            
+            const welcomeText = document.getElementById('welcome-user');
+            if(welcomeText) welcomeText.innerText = `Bienvenida, ${primerNombre}`;
 
-                    // --- ACTUALIZAR ESTADO DE CONEXIÓN VISUAL ---
-                    const dot = document.getElementById('connection-dot');
-                    if(dot) dot.className = "w-3 h-3 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]";
-                    
-                    const text = document.getElementById('connection-text');
-                    if(text) {
-                        text.innerText = "Conectado al ESP32";
-                        text.className = "text-sm text-green-400";
-                    }
-                    
-                    // --- ACTUALIZAR HORA DE LA ÚLTIMA LECTURA ---
-                    let ahora = new Date();
-                    const lastRead = document.getElementById('last-read');
-                    if(lastRead) lastRead.innerText = ahora.toLocaleTimeString();
+            document.getElementById('cuenta-nombre').value = primerNombre;
 
-                    // --- ACTUALIZAR PANEL DE DEPURACIÓN JSON ---
-                    const debugPanel = document.getElementById('debug-json');
-                    if(debugPanel) debugPanel.innerText = JSON.stringify(datos, null, 2);
-                })
-                .catch(error => {
-                    console.error("Error de conexión:", error);
-                    // Si el ESP32 se apaga o desconecta, la interfaz mostrará alerta roja
-                    const dot = document.getElementById('connection-dot');
-                    if(dot) dot.className = "w-3 h-3 rounded-full bg-red-500";
-                    
-                    const text = document.getElementById('connection-text');
-                    if(text) {
-                        text.innerText = "Desconectado";
-                        text.className = "text-sm text-red-400";
-                    }
+            document.getElementById('login-section').classList.add('hidden');
+            document.getElementById('app-section').classList.remove('hidden');
+            
+            inicializarGraficaPrincipal(); 
+            inicializarMiniGraficosResumen(); 
+            inicializarGraficosHistoricos(); 
+            
+            obtenerDatosESP32(); 
+            setInterval(obtenerDatosESP32, 5000);
+        });
+
+        // ACTUALIZAR NOMBRE DESDE "MI CUENTA"
+        document.getElementById('btn-guardar-perfil').addEventListener('click', function() {
+            let nuevoNombre = document.getElementById('cuenta-nombre').value.trim();
+            if(nuevoNombre !== "") {
+                let primerNombre = nuevoNombre.split(' ')[0];
+                primerNombre = primerNombre.charAt(0).toUpperCase() + primerNombre.slice(1).toLowerCase();
+                
+                const welcomeText = document.getElementById('welcome-user');
+                if(welcomeText) welcomeText.innerText = `Bienvenida, ${primerNombre}`;
+                
+                const btn = this;
+                const txt = btn.innerText;
+                btn.innerText = "¡Guardado!";
+                btn.classList.replace('bg-cyan-600', 'bg-green-600');
+                setTimeout(() => {
+                    btn.innerText = txt;
+                    btn.classList.replace('bg-green-600', 'bg-cyan-600');
+                }, 2000);
+            }
+        });
+
+        // DESCARGAR HISTORIAL CSV
+        document.getElementById('download-history-btn').addEventListener('click', function() {
+            let csv = 'Fecha,Hora,Duracion,Agua Estimada,Estado\n';
+            const rows = document.querySelectorAll('#historialContainer tr');
+            rows.forEach(row => {
+                const cols = row.querySelectorAll('td');
+                if(cols.length > 0) {
+                    let rowData = [];
+                    cols.forEach(col => rowData.push('"' + col.innerText.trim() + '"'));
+                    csv += rowData.join(',') + '\n';
+                }
+            });
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'historial_riego.csv');
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+        document.getElementById('logout-btn').addEventListener('click', function(e) { window.location.reload(); });
+
+        document.querySelectorAll('.nav-item').forEach(boton => {
+            boton.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden'));
+                document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active', 'bg-blue-500/10'));
+                const target = boton.getAttribute('data-section') + '-section';
+                const sec = document.getElementById(target);
+                if(sec) sec.classList.remove('hidden');
+                boton.classList.add('active', 'bg-blue-500/10');
+            });
+        });
+
+        // PROGRAMACIÓN
+        document.getElementById('btn-add-schedule').addEventListener('click', function() {
+            const hora = document.getElementById('horaProgramacion').value;
+            const duracion = document.getElementById('duracionProgramacion').value;
+            if(!hora || !duracion) return alert("Selecciona hora y duración.");
+            const emptyMsg = document.getElementById('empty-schedule-msg');
+            if(emptyMsg) emptyMsg.style.display = 'none';
+
+            const container = document.getElementById('listaProgramaciones');
+            const item = document.createElement('div');
+            item.className = "flex justify-between items-center bg-slate-900/50 p-4 rounded-lg border border-slate-600 transition hover:border-cyan-500/50";
+            
+            let [h, m] = hora.split(':');
+            let ampm = h >= 12 ? 'PM' : 'AM';
+            h = h % 12 || 12;
+            let horaFormat = `${h}:${m} ${ampm}`;
+
+            item.innerHTML = `
+                <div class="flex items-center gap-3"><div class="bg-blue-500/20 p-2 rounded-full text-blue-400">⏰</div><div><div class="text-cyan-400 font-bold text-lg">${horaFormat}</div><div class="text-gray-400 text-xs">Duración: ${duracion} min</div></div></div>
+                <button class="text-red-400 hover:text-red-300 hover:bg-red-500/10 px-3 py-1 rounded text-sm transition" onclick="this.parentElement.remove()">Eliminar</button>
+            `;
+            container.appendChild(item);
+        });
+
+        // RIEGO MANUAL A HISTORIAL
+        const statusDiv = document.getElementById('riegoManualStatus');
+        document.getElementById('btn-start-manual').addEventListener('click', function() {
+            const minutos = document.getElementById('duracionManual').value;
+            statusDiv.innerHTML = `<span class="text-green-400 animate-pulse">💧 Regando sistema por ${minutos} minutos...</span>`;
+            statusDiv.className = "mt-2 p-4 bg-green-900/30 rounded-lg text-center font-semibold border border-green-500/50 shadow-[0_0_15px_rgba(34,197,94,0.2)] transition-all duration-300";
+        });
+        
+        document.getElementById('btn-stop-manual').addEventListener('click', function() {
+            statusDiv.innerHTML = `<span class="text-red-400">🛑 Riego detenido. Guardando en historial...</span>`;
+            statusDiv.className = "mt-2 p-4 bg-red-900/30 rounded-lg text-center font-semibold border border-red-500/50 transition-all duration-300";
+            
+            const duracion = document.getElementById('duracionManual').value;
+            const aguaCalculada = (duracion * 0.24).toFixed(1); 
+            const now = new Date();
+            const horaStr = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+            const tbody = document.getElementById('historialContainer');
+            const tr = document.createElement('tr');
+            tr.className = "border-t border-slate-700/50 hover:bg-slate-700/20 transition bg-green-900/20";
+            tr.innerHTML = `<td class="px-6 py-4 text-sm text-gray-300">Hoy (Manual)</td><td class="px-6 py-4 text-sm text-cyan-400 font-medium">${horaStr}</td><td class="px-6 py-4 text-sm text-gray-300">${duracion} min</td><td class="px-6 py-4 text-sm text-gray-300">${aguaCalculada} L</td><td class="px-6 py-4 text-sm font-semibold text-green-400">Completado</td>`;
+            tbody.insertBefore(tr, tbody.firstChild);
+
+            setTimeout(() => {
+                statusDiv.innerHTML = `Sistema en espera`;
+                statusDiv.className = "mt-2 p-4 bg-slate-900/50 rounded-lg text-center text-gray-300 font-semibold border border-slate-700 transition-all duration-300";
+                tr.classList.remove('bg-green-900/20'); 
+            }, 3000);
+        });
+
+        // ==========================================
+        // GRÁFICOS (SCATTER PRINCIPAL)
+        // ==========================================
+        let miGrafico = null;
+        let tiempoReal = []; let datosTempReal = []; let datosHumReal = [];
+
+        function inicializarGraficaPrincipal() {
+            const canvas = document.getElementById('tempHumidityChart');
+            if(canvas && !miGrafico) {
+                const ctx = canvas.getContext('2d');
+                miGrafico = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: tiempoReal,
+                        datasets: [
+                            { label: 'Temperatura (°C)', data: datosTempReal, backgroundColor: '#f97316', borderColor: '#f97316', showLine: false, pointRadius: 6, pointHoverRadius: 9 },
+                            { label: 'Humedad Suelo (%)', data: datosHumReal, backgroundColor: '#06b6d4', borderColor: '#06b6d4', showLine: false, pointRadius: 6, pointHoverRadius: 9 }
+                        ]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, scales: { y: { grid: { color: 'rgba(255,255,255,0.05)', borderDash: [5, 5] } }, x: { grid: { display: false } } } }
                 });
+            }
         }
 
-        // Iniciar la primera vez que se carga la página
-        obtenerDatosESP32();
+        function inicializarMiniGraficosResumen() {
+            const ctxPie = document.getElementById('pieNutrientesChart');
+            if(ctxPie) new Chart(ctxPie, { type: 'pie', data: { labels: ['Nitrógeno', 'Fósforo', 'Potasio', 'Micro'], datasets: [{ data: [40, 25, 20, 15], backgroundColor: ['#3b82f6', '#8b5cf6', '#a855f7', '#d946ef'], borderWidth: 3, borderColor: '#1e293b', hoverOffset: 6 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right' } } } });
 
-        // Pedir datos al ESP32 cada 5 segundos (5000 milisegundos)
-        setInterval(obtenerDatosESP32, 5000);
+            const ctxDoughnut = document.getElementById('doughnutConsumoChart');
+            if(ctxDoughnut) new Chart(ctxDoughnut, { type: 'doughnut', data: { labels: ['Tomates', 'Suculentas', 'Albahaca', 'Jalapeño', 'Cilantro'], datasets: [{ data: [30, 10, 20, 25, 15], backgroundColor: ['#ef4444', '#10b981', '#84cc16', '#f59e0b', '#14b8a6'], borderWidth: 3, borderColor: '#1e293b', cutout: '75%', hoverOffset: 6 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right' } } } });
+
+            const canvasBar = document.getElementById('barRiegoDiarioChart');
+            if(canvasBar) {
+                const ctxBar = canvasBar.getContext('2d');
+                let gradBar = ctxBar.createLinearGradient(0, 0, 0, 200); gradBar.addColorStop(0, '#38bdf8'); gradBar.addColorStop(1, '#0284c7');
+                new Chart(ctxBar, { type: 'bar', data: { labels: ['L', 'M', 'M', 'J', 'V', 'S', 'D'], datasets: [{ label: 'Riegos', data: [3, 2, 4, 3, 5, 2, 3], backgroundColor: gradBar, borderRadius: 6, barThickness: 16 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { grid: { color: 'rgba(255,255,255,0.05)', borderDash: [3, 3] }, ticks: { stepSize: 2 } }, x: { grid: { display: false } } } } });
+            }
+        }
+
+        function inicializarGraficosHistoricos() {
+            const canvasRiego = document.getElementById('historialRiegoChart');
+            if(canvasRiego) {
+                const ctxRiego = canvasRiego.getContext('2d');
+                let gradHistBar = ctxRiego.createLinearGradient(0, 0, 0, 300); gradHistBar.addColorStop(0, 'rgba(6, 182, 212, 0.8)'); gradHistBar.addColorStop(1, 'rgba(6, 182, 212, 0.2)');
+                new Chart(ctxRiego, { type: 'bar', data: { labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'], datasets: [{ label: 'Riegos', data: [2, 3, 1, 4, 2, 5, 3], backgroundColor: gradHistBar, borderRadius: 8, barThickness: 30 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { grid: { color: 'rgba(255,255,255,0.05)', borderDash: [5,5] } }, x: { grid: { display: false } } } } });
+            }
+
+            const canvasTemp = document.getElementById('historialTempChart');
+            if(canvasTemp) {
+                const ctxTemp = canvasTemp.getContext('2d');
+                let gradHistTemp = ctxTemp.createLinearGradient(0, 0, 0, 300); gradHistTemp.addColorStop(0, 'rgba(249, 115, 22, 0.5)'); gradHistTemp.addColorStop(1, 'rgba(249, 115, 22, 0)');
+                new Chart(ctxTemp, { type: 'line', data: { labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'], datasets: [{ label: 'Temp Promedio (°C)', data: [22.5, 23.1, 24.5, 26.0, 25.2, 24.8, 23.9], borderColor: '#f97316', backgroundColor: gradHistTemp, borderWidth: 3, fill: true, tension: 0.5, pointRadius: 5, pointBackgroundColor: '#1e293b', pointBorderWidth: 2 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { min: 15, max: 35, grid: { color: 'rgba(255,255,255,0.05)', borderDash: [5,5] } }, x: { grid: { display: false } } } } });
+            }
+
+            const canvasAgua = document.getElementById('historialAguaChart');
+            if(canvasAgua) {
+                const ctxAgua = canvasAgua.getContext('2d');
+                let gradHistAgua = ctxAgua.createLinearGradient(0, 0, 0, 300); 
+                gradHistAgua.addColorStop(0, 'rgba(59, 130, 246, 0.5)'); 
+                gradHistAgua.addColorStop(1, 'rgba(59, 130, 246, 0)');
+                new Chart(ctxAgua, {
+                    type: 'line',
+                    data: {
+                        labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+                        datasets: [{ label: 'Consumo (Litros)', data: [12.5, 10.2, 14.1, 9.5, 15.0, 11.2, 13.4], borderColor: '#3b82f6', backgroundColor: gradHistAgua, borderWidth: 3, fill: true, tension: 0.4, pointRadius: 5, pointBackgroundColor: '#1e293b', pointBorderWidth: 2 }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { min: 0, grid: { color: 'rgba(255,255,255,0.05)', borderDash: [5,5] }, ticks: { color: '#9ca3af' } }, x: { grid: { display: false }, ticks: { color: '#9ca3af' } } } }
+                });
+            }
+        }
+
+        // ==========================================
+        // COMUNICACIÓN CON FIREBASE
+        // ==========================================
+        function obtenerDatosESP32() {
+            fetch(URL_FIREBASE)
+                .then(respuesta => {
+                    if (!respuesta.ok) throw new Error("Error en red");
+                    return respuesta.json();
+                })
+                .then(datos => {
+                    if(!datos) return; 
+                    
+                    document.getElementById('kpi-temp').innerText = datos.temperatura || "--";
+                    document.getElementById('kpi-humidity').innerText = datos.humedad || "--";
+                    document.getElementById('kpi-moisture').innerText = datos.humedadSuelo || "--";
+
+                    document.getElementById('sidebar-temp').innerText = (datos.temperatura || "--") + " °C";
+                    document.getElementById('sidebar-humidity').innerText = (datos.humedad || "--") + " %";
+                    document.getElementById('sidebar-moisture').innerText = (datos.humedadSuelo || "--") + " %";
+
+                    const dot = document.getElementById('connection-dot');
+                    if(dot) dot.className = "w-3 h-3 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]";
+                    const text = document.getElementById('connection-text');
+                    if(text) { text.innerText = "Conectado a Firebase"; text.className = "text-sm text-green-400"; }
+                    
+                    const lastRead = document.getElementById('last-read');
+                    if(lastRead) lastRead.innerText = new Date().toLocaleTimeString();
+
+                    const debugPanel = document.getElementById('debug-json');
+                    if(debugPanel) debugPanel.innerText = JSON.stringify(datos, null, 2);
+
+                    const alertas = document.getElementById('alerts-container');
+                    if(alertas && datos.humedadSuelo) {
+                        alertas.innerHTML = '';
+                        if (datos.humedadSuelo < 40) {
+                            alertas.innerHTML += `<div class="p-4 bg-red-500/20 rounded-lg text-red-300 text-sm border border-red-500/30">⚠️ <strong>Alerta:</strong> Humedad de suelo crítica (${datos.humedadSuelo}%). Activa el riego.</div>`;
+                        } else if (datos.temperatura > 32) {
+                            alertas.innerHTML += `<div class="p-4 bg-orange-500/20 rounded-lg text-orange-300 text-sm border border-orange-500/30">🔥 <strong>Advertencia:</strong> Temperatura alta (${datos.temperatura}°C). Riesgo de evaporación.</div>`;
+                        } else {
+                            alertas.innerHTML += `<div class="p-4 bg-blue-500/20 rounded-lg text-blue-300 text-sm border border-blue-500/30">💧 <strong>Estable:</strong> Parámetros en rango óptimo (Hum: ${datos.humedadSuelo}%, Temp: ${datos.temperatura}°C).</div>`;
+                        }
+                    }
+
+                    if(miGrafico && datos.temperatura && datos.humedadSuelo) {
+                        const ahora = new Date();
+                        const hora = ahora.getHours() + ":" + ahora.getMinutes().toString().padStart(2, '0') + ":" + ahora.getSeconds().toString().padStart(2, '0');
+                        
+                        tiempoReal.push(hora); datosTempReal.push(datos.temperatura); datosHumReal.push(datos.humedadSuelo);
+                        if(tiempoReal.length > 15) { tiempoReal.shift(); datosTempReal.shift(); datosHumReal.shift(); }
+                        miGrafico.update();
+                    }
+                })
+                .catch(error => {
+                    const dot = document.getElementById('connection-dot');
+                    if(dot) dot.className = "w-3 h-3 rounded-full bg-red-500";
+                    const text = document.getElementById('connection-text');
+                    if(text) { text.innerText = "Desconectado"; text.className = "text-sm text-red-400"; }
+                });
+        }
     </script>
 </body>
 </html>
